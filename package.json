@@ -1,0 +1,29 @@
+{
+  "name": "html-element-print",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "rc-tools run compile --babel-runtime",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rc-tools run build",
+    "gh-pages": "rc-tools run gh-pages",
+    "start": "rc-tools run server",
+    "pub": "rc-tools run update-self && rc-tools run pub",
+    "lint": "rc-tools run lint",
+    "prepublish": "rc-tools run guard"
+  },
+  "config": {
+    "name": "htmlElementPrint",
+    "entry": {
+      "htmlElementPrint": [
+        "./src/index.js"
+      ]
+    }
+  },
+  "author": "edmund chen",
+  "license": "ISC",
+  "devDependencies": {
+    "rc-tools": "^8.2.2"
+  }
+}
