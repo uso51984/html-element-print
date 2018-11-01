@@ -1,6 +1,6 @@
 # HTML Element Print
 
-[demo](https://rpdasilva.github.io/print-html-element/)
+[demo](https://uso.gitee.io/html-element-print/)
 
 ## 安装
 
