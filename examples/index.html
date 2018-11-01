@@ -89,7 +89,7 @@
         document.getElementById('printElButton').onclick = function(e){
           const element = document.querySelector('#printElement');
           e.preventDefault();
-          htmlElementPrint(element, {sourceType: 'dom'});
+          htmlElementPrint(element, {sourceType: 'dom', pageTitle: '测试打印页'});
         }
       </script>
   </body>
