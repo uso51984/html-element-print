@@ -3,14 +3,21 @@
   "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uso51984/html-element-print"
+  },
+  "keywords": [
+    "html-element-print",
+    "print-html-element",
+    "print-html",
+    "react-print-html",
+    "vue-print-html",
+    "angular-print-html"
+  ],
   "scripts": {
     "compile": "rc-tools run compile --babel-runtime",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rc-tools run build",
-    "gh-pages": "rc-tools run gh-pages",
-    "start": "rc-tools run server",
-    "pub": "rc-tools run update-self && rc-tools run pub",
-    "lint": "rc-tools run lint"
+    "build": "rc-tools run build"
   },
   "config": {
     "name": "htmlElementPrint",
@@ -21,7 +28,7 @@
     }
   },
   "author": "edmund chen",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "rc-tools": "^8.2.2"
   }
