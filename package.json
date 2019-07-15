@@ -1,8 +1,20 @@
 {
   "name": "html-element-print",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uso51984/html-element-print"
+  },
+  "keywords": [
+    "html-element-print",
+    "print-html-element",
+    "print-html",
+    "react-print-html",
+    "vue-print-html",
+    "angular-print-html"
+  ],
   "scripts": {
     "compile": "bee-tools run compile --babel-runtime",
     "dist": "bee-tools run dist",
@@ -17,7 +29,7 @@
     }
   },
   "author": "edmund chen",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "bee-build-tools": "0.0.26"
   }
