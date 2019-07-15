@@ -4,13 +4,9 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "rc-tools run compile --babel-runtime",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rc-tools run build",
-    "gh-pages": "rc-tools run gh-pages",
-    "start": "rc-tools run server",
-    "pub": "rc-tools run update-self && rc-tools run pub",
-    "lint": "rc-tools run lint"
+    "compile": "bee-tools run compile --babel-runtime",
+    "dist": "bee-tools run dist",
+    "release": "bee-tools run release"
   },
   "config": {
     "name": "htmlElementPrint",
@@ -23,6 +19,6 @@
   "author": "edmund chen",
   "license": "ISC",
   "devDependencies": {
-    "rc-tools": "^8.2.2"
+    "bee-build-tools": "0.0.26"
   }
 }

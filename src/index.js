@@ -5,57 +5,53 @@ const callPrint = (printWindow, iframe) => {
       document.body.removeChild(iframe);
     }
   } else {
-    setTimeout(function() {
+    setTimeout(() => {
       callPrint(printWindow, iframe);
     }, 50);
   }
-}
+};
 
 const getBaseHref = () => {
-  const port = (window.location.port) ? ':' + window.location.port : '';
-  return window.location.protocol + '//' + window.location.hostname + port + window.location.pathname;
-}
+  const port = (window.location.port) ? `:${window.location.port}` : '';
+  return `${window.location.protocol}//${window.location.hostname}${port}${window.location.pathname}`;
+};
 
 const getMarkup = (elementHtml, options) => {
-  let template = options.templateString;
+  const template = options.templateString;
   const templateRegex = new RegExp(/{{\s*printBody\s*}}/gi);
   let stylesheets;
   let styles;
-  let html = [];
+  const html = [];
 
-  if(template && templateRegex.test(template)) {
+  if (template && templateRegex.test(template)) {
     elementHtml = template.replace(templateRegex, elementHtml);
   }
 
   html.push(`<html><head><title>${options.pageTitle || ''}</title>`);
 
-    // If stylesheet URL's or list of stylesheet URL's are specified, override page stylesheets
+  // If stylesheet URL's or list of stylesheet URL's are specified, override page stylesheets
   if (options.stylesheets) {
     stylesheets = Array.isArray(options.stylesheets) ? options.stylesheets : [options.stylesheets];
   } else {
     stylesheets = Array.prototype.slice
       .call(document.getElementsByTagName('link'))
-      .map(function(link) {
-        return link.href;
-      });
+      .map(link => link.href);
   }
 
-  stylesheets.forEach(function(href) {
-    html.push('<link rel="stylesheet" href="' + href + '">');
+  stylesheets.forEach((href) => {
+    html.push(`<link rel="stylesheet" href="${href}">`);
   });
 
-    // If inline styles or list of inline styles are specified, override inline styles
+  // If inline styles or list of inline styles are specified, override inline styles
   if (options.styles) {
     styles = Array.isArray(options.styles) ? options.styles : [options.styles];
   } else {
     styles = Array.prototype.slice
       .call(document.getElementsByTagName('style'))
-      .map(function(style) {
-        return style.innerHTML;
-      });
+      .map(style => style.innerHTML);
   }
 
-  styles.forEach(style => {
+  styles.forEach((style) => {
     html.push(`<style type="text/css">${style}</style>`);
   });
 
@@ -67,14 +63,14 @@ const getMarkup = (elementHtml, options) => {
       function printPage() {
         focus();
         print();
-        ${options.printMode.toLowerCase() == 'popup' ? 'close();' : ''}
+        ${options.printMode.toLowerCase() === 'popup' ? 'close();' : ''}
       }
     </script>
   `);
   html.push('</body></html>');
 
   return html.join('');
-}
+};
 
 const printHtml = (element, selfOptions = {}) => {
   const defaultOptions = {
@@ -87,12 +83,12 @@ const printHtml = (element, selfOptions = {}) => {
     styles: null
   };
   const options = { ...defaultOptions, ...selfOptions };
-  let html = element;;
+  let html = element;
   if (options.htmlType === 'domObj') {
     html = element.outerHTML;
   }
 
-    // Get markup to be printed
+  // Get markup to be printed
   const markup = getMarkup(html, options);
   let printWindow;
   let printIframe;
@@ -103,7 +99,7 @@ const printHtml = (element, selfOptions = {}) => {
     printWindow = window.open('about:blank', 'printElementWindow', options.popupProperties);
     printDocument = printWindow.document;
   } else {
-    printElementID = 'printElement_' + (Math.round(Math.random() * 99999)).toString();
+    printElementID = `printElement_${(Math.round(Math.random() * 99999)).toString()}`;
 
     printIframe = document.createElement('iframe');
     printIframe.setAttribute('id', printElementID);
@@ -127,12 +123,12 @@ const printHtml = (element, selfOptions = {}) => {
   printDocument.open();
 
   // SetTimeout fixesiframe printMode does not work in firefox
-  setTimeout(function() {
+  setTimeout(() => {
     printDocument.write(markup);
     printDocument.close();
   });
 
   callPrint(printWindow, printIframe);
-}
+};
 
 export default printHtml;
